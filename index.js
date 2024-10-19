@@ -7,12 +7,11 @@ const client = new Client({
     intents: [
         GatewayIntentBits.Guilds, 
         GatewayIntentBits.GuildMessages, 
+        GatewayIntentBits.GuildMembers,
         GatewayIntentBits.MessageContent,
-        GatewayIntentBits.DirectMessages,
-        GatewayIntentBits.DirectMessageReactions,
-        GatewayIntentBits.DirectMessageTyping
+        GatewayIntentBits.DirectMessages
     ],
-    Partials: [
+    partials: [
         Partials.Channel,
         Partials.Message
     ]
@@ -26,10 +25,11 @@ client.on('messageCreate', (message)=>{
     if(message.author.bot) return;
 
     console.log(`message received: ${message.content}`)
-    if(message.channel.type === ChannelType.DM){
+    if(message.channel.type === ChannelType.DM)
+        {
         console.log('DM detected');
         message.reply('I am a bot, please use channel for commands.');
-    }
+        }
 
     // if(message.content.startsWith(prefix)){
     //     const args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -43,8 +43,6 @@ client.on('messageCreate', (message)=>{
     //         message.channel.send('Hiya!');
     //     }
     // }
-
-
 });
 
 client.login(token);
