@@ -31,18 +31,18 @@ client.on('messageCreate', (message)=>{
         message.reply('I am a bot, please use channel for commands.');
         }
 
-    // if(message.content.startsWith(prefix)){
-    //     const args = message.content.slice(prefix.length).trim().split(/ +/);
-    //     const command = args.shift().toLowerCase();
+    if(message.content.startsWith(prefix)){
+        const args = message.content.slice(prefix.length).trim().split(/ +/);
+        const command = args.shift().toLowerCase();
 
-    //     if(command === 'ping'){
-    //         message.channel.send('Pong!');
-    //     }
+        if(command === 'ping'){
+            message.channel.send('Pong!');
+        }
 
-    //     if(command === 'hello'){
-    //         message.channel.send('Hiya!');
-    //     }
-    // }
+        if(command === 'hello'){
+            message.channel.send('Hiya!');
+        }
+    }
 });
 
 client.login(token);
